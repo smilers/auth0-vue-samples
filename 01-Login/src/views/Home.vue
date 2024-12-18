@@ -6,12 +6,12 @@
   </div>
 </template>
 
-<script>
-import Hero from "../components/Hero";
-import HomeContent from "../components/HomeContent";
+<script lang="ts">
+import Hero from "../components/Hero.vue";
+import HomeContent from "../components/HomeContent.vue";
 
 export default {
-  name: "home",
+  name: "home-view",
   components: {
     Hero,
     HomeContent,

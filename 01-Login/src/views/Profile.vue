@@ -15,16 +15,16 @@
     </div>
 
     <div class="row">
-      <pre v-highlightjs><code class="json">{{JSON.stringify(user, null, 2)}}</code></pre>
+      <highlightjs language="json" :code="JSON.stringify(user, null, 2)" />
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { useAuth0 } from '@auth0/auth0-vue';
 
 export default {
-  name: "profile",
+  name: "profile-view",
   setup() {
     const auth0 = useAuth0();
     

@@ -14,18 +14,18 @@
     <div class="result-block-container">
       <div :class="['result-block', apiMessage ? 'show' : '']">
         <h6 class="muted">Result</h6>
-        <pre v-highlightjs><code class="json">{{JSON.stringify(apiMessage, null, 2)}}</code></pre>
+        <highlightjs language="json" :code="JSON.stringify(apiMessage, null, 2) || ''" />
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
-import { ref } from "@vue/reactivity";
+import { ref } from "vue";
 
 export default {
-  name: "Api",
+  name: "api-view",
   setup() {
     const auth0 = useAuth0();
     const apiMessage = ref();
@@ -41,7 +41,7 @@ export default {
           });
           const data = await response.json();
           apiMessage.value = data;
-        } catch (e) {
+        } catch (e: any) {
           apiMessage.value = `Error: the server responded with '${e.response.status}: ${e.response.statusText}'`;
         }
       },
